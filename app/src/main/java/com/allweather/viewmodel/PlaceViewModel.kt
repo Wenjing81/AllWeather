@@ -1,5 +1,6 @@
 package com.allweather.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,10 @@ class PlaceViewModel : ViewModel() {
     private val repository = AllWeatherRepository
     // placeList may be used afterward to store the city displayed as cache.
 
-
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("First Activity onCleared",this.toString())
+    }
 
     private val _searchPlace = MutableLiveData<Resource<QueryPlaceResult>>()
     val searchPlace: LiveData<Resource<QueryPlaceResult>> = _searchPlace
